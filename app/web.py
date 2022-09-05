@@ -2,9 +2,12 @@ from flask import Flask, request, jsonify
 from utils import preprocess_data
 import numpy as np
 import pickle
+from flask_cors import CORS, cross_origin
 from urllib.request import urlopen
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 # Load saved model pipeline
 clf_pipeline = pickle.load(urlopen('https://github.com/mart-anthony-stark/Machine-Learning-and-Deep-Learning/blob/main/ph_fake_news/ph_fake_news_pipeline.pkl?raw=true'))
@@ -14,6 +17,7 @@ mapped_dict = {'real': 0, 'fake': 1}
 mapped_list = list(mapped_dict.keys())
 
 @app.route('/', methods=['GET','POST'])
+@cross_origin()
 def index():
   if request.method == 'POST':
     data = request.json['news']
