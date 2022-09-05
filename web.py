@@ -2,11 +2,12 @@ from flask import Flask, request, jsonify
 from utils import preprocess_data
 import numpy as np
 import pickle
+from urllib.request import urlopen
 
 app = Flask(__name__)
 
 # Load saved model pipeline
-clf_pipeline = pickle.load(open('./ph_fake_news_pipeline.pkl', 'rb'))
+clf_pipeline = pickle.load(urlopen('https://github.com/mart-anthony-stark/Machine-Learning-and-Deep-Learning/blob/main/ph_fake_news/ph_fake_news_pipeline.pkl?raw=true'))
 
 # Target Classes
 mapped_dict = {'real': 0, 'fake': 1}
