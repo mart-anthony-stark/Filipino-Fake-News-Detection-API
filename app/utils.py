@@ -5,6 +5,12 @@ nltk.download('stopwords')
 from nltk.corpus import stopwords
 en_stopwords = stopwords.words('english')
 
+tl_stopwords = []
+with open('./app/stopwords-tl.txt') as topo_file:
+    for line in topo_file:
+        tl_stopwords.append(line.replace('\n', ''))
+tl_stopwords.extend(['ba', 'eh', 'kasi', 'lang', 'mo', 'naman', 'opo', 'po', 'si', 'talaga', 'yung'])
+
 def remove_punctuation(txt):
   all_list = [char for char in txt if char not in string.punctuation]
   return ''.join(all_list)
@@ -13,11 +19,6 @@ def remove_en_stopwords(txt):
   return ' '.join([word for word in txt.split() if word not in (en_stopwords)])
 
 def remove_tl_stopwords(txt):
-  tl_stopwords = []
-  with open('./stopwords-tl.txt') as topo_file:
-      for line in topo_file:
-          tl_stopwords.append(line.replace('\n', ''))
-  tl_stopwords.extend(['ba', 'eh', 'kasi', 'lang', 'mo', 'naman', 'opo', 'po', 'si', 'talaga', 'yung'])
   return ' '.join([word for word in txt.split() if word not in (tl_stopwords)])
 
 
