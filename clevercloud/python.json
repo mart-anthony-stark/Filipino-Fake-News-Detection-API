@@ -1,0 +1,8 @@
+{
+  "build": {
+      "folder": "app"
+  },
+  "deploy": {
+      "module": "web:app"
+  }
+}

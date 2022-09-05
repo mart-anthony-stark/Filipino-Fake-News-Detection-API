@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from app.utils import preprocess_data
+from utils import preprocess_data
 import numpy as np
 import pickle
 from urllib.request import urlopen

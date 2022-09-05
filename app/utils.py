@@ -14,7 +14,7 @@ def remove_en_stopwords(txt):
 
 def remove_tl_stopwords(txt):
   tl_stopwords = []
-  with open('stopwords-tl.txt') as topo_file:
+  with open('./stopwords-tl.txt') as topo_file:
       for line in topo_file:
           tl_stopwords.append(line.replace('\n', ''))
   tl_stopwords.extend(['ba', 'eh', 'kasi', 'lang', 'mo', 'naman', 'opo', 'po', 'si', 'talaga', 'yung'])
